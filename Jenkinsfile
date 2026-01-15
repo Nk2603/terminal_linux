@@ -10,10 +10,10 @@ pipeline{
         stage('Build and Push Images') {
             steps {
                 script {
-                    sh 'docker build -t Nk2603/terminal .'
+                    sh 'docker build -t nk2603/terminal .'
                     withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'ay_pass', usernameVariable: 'ay_user')]) {
                         sh 'docker login -u $ay_user -p $ay_pass'
-                        sh 'docker push Nk2603/terminal '
+                        sh 'docker push nk2603/terminal '
                     }
                 }
             }
