@@ -10,10 +10,10 @@ pipeline{
         stage('Build and Push Images') {
             steps {
                 script {
-                    sh 'docker build -t nk2603/term .'
-                    withCredentials([usernamePassword(credentialsId: 'docker_hub', passwordVariable: 'ay_pass', usernameVariable: 'ay_user')]) {
+                    sh 'docker build -t nk2603/linux .'
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'ay_pass', usernameVariable: 'ay_user')]) {
                         sh 'docker login -u $ay_user -p $ay_pass'
-                        sh 'docker push nk2603/term'
+                        sh 'docker push nk2603/linux'
                     }
                 }
             }
@@ -23,7 +23,7 @@ pipeline{
             steps {
                 script {
                     sh 'docker rm -f term'
-                    sh 'docker run -d --name term1 -p 2005:80 nk2603/term'
+                    sh 'docker run -d --name term1 -p 2005:80 nk2603/linux'
                 }
             }
         }
