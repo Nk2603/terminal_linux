@@ -23,7 +23,7 @@ pipeline{
             steps {
                 script {
                     sh 'docker rm -f terminal_linux '
-                    sh 'docker run -d --name terminal_linux -p 2026:80 nk2603/terminal'
+                    sh 'docker run -d --name terminal_linux1 -p 2005:80 nk2603/terminal'
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline{
         stage('Post Deployment Testing') {
             steps {
                 script {
-                    sh 'curl -I http://localhost:2026'
+                    sh 'curl -I http://localhost:2005'
                 }
             }
         }
