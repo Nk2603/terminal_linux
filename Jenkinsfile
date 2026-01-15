@@ -22,8 +22,8 @@ pipeline{
         stage('Deploy Services') {
             steps {
                 script {
-                    sh 'docker rm -f terminal_linux '
-                    sh 'docker run -d --name terminal_linux1 -p 2005:80 nk2603/terminal'
+                    sh 'docker rm -f terminal_linux'
+                    sh 'docker run -d --name terminal_linux -p 2005:80 nk2603/terminal'
                 }
             }
         }
